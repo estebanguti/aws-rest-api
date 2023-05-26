@@ -1,0 +1,33 @@
+spring:
+  config:
+    activate:
+      on-profile: demo
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    generate-ddl: true
+    hibernate:
+      dll-auto: create
+
+
+aws:
+  key: ${ACCESS_KEY}
+  secret: ${ACCESS_SECRET}
+
+sns:
+  topic-arn: arn:aws:sns:us-east-1:303710321160:demo-aws-uploads-notification-topic
+sqs:
+  queue-url: https://sqs.us-east-1.amazonaws.com/303710321160/demo-aws-uploads-notification-queue
+lambda:
+  function-arn: arn:aws:lambda:us-east-1:303710321160:function:lambda-demo-uploads-batch-notifier
+
+server:
+  port: 8081
